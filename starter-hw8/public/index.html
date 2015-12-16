@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CS4241-B15 Homework Assignment 7</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Author: Josh Audibert -->
+    <!-- URL: https://ja-cs4241-assignment7.herokuapp.com -->
+  </head>
+  <body>
+    <div id="overlay"></div>
+    <div id="wrapper">
+      <header>
+        Assignment #8
+      </header>
+      <div id="message-form">
+        <form onsubmit="return false;">
+          <input id="message" type="text" name="message" />
+          <button type="submit" onclick="addMessage();">Send</button>
+        </form>
+      </div>
+      <div id="login-popup" class="popup">
+        <form onsubmit="return false;">
+          <label for="username"><strong>Username:</strong></label>
+          <input id="username" type="text" name="username"/>
+          <button type="submit" onclick="setUsername();">Login</button>
+        </form>
+      </div>
+      <div id="message-holder">
+      </div>
+      <footer>
+        <p class="copyright">CS 4241: Webware (Fall 2015)<br>
+          Josh Audibert, Worcester Polytechnic Institute
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script type="text/javascript" src="underscore-min.js"></script>
+  <script type="text/javascript" src="templates.js"></script>
+  <script>
+
+  var login = document.getElementById("login-popup");
+  var msgForm = document.getElementById("message-form");
+  var overlay = document.getElementById("overlay");
+
+  login.setAttribute("hidden", true);
+  overlay.setAttribute("hidden", true);
+
+  makeGet('/messages');
+  if (document.cookie.length == 0) {
+    getUsername();
+  } else {
+    makeGet('/messages');
+  }
+
+  function getUsername() {
+    login.removeAttribute("hidden");
+    msgForm.setAttribute("hidden", true);
+    overlay.removeAttribute("hidden");
+  }
+
+  function setUsername() {
+    document.cookie = "username=" + document.getElementById("username").value;
+    login.setAttribute("hidden", true);
+    msgForm.removeAttribute("hidden");
+    overlay.setAttribute("hidden", true);
+    makeGet('/messages');
+  }
+
+  function addMessage() {
+    var message = document.getElementById("message").value;
+    document.getElementById("message").value = "";
+
+    var reqp = new XMLHttpRequest();
+    reqp.open('POST', '/addMessage', true);
+    reqp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    reqp.onload = function() {
+      makeGet('/messages');
+    };
+
+    reqp.send('message='+message+'&username='+parseCookies()['username']);
+  }
+
+  function parseCookies() {
+    var list = {},
+        rc = document.cookie;
+
+    rc && rc.split(';').forEach(function(cookie) {
+        var parts = cookie.split('=');
+        list[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+
+    return list;
+  }
+
+  function makeGet(url) {
+    var req = new XMLHttpRequest();
+
+    req.onreadystatechange = function() {
+      handleRes(req);
+    }
+
+    req.open('GET', url);
+    req.send();
+  }
+
+  function handleRes(req) {
+    if( req.readyState !== XMLHttpRequest.DONE )
+      return;
+
+    if(req.status === 200)
+      buildList(JSON.parse(req.responseText));
+  }
+
+  function buildList(A) {
+    var el = document.getElementById('message-holder');
+    el.innerHTML = A;
+  }
+
+  </script>
+
+</html>
