@@ -1,8 +1,27 @@
+
 var http = require('http')
   , _ = require('underscore')
   , fs = require('fs')
   , url = require('url')
   , path = require('path')
+
+
+// FAKEBOOK
+var posts= [
+  {
+    activity: '(Event Name)',
+    description: '(Insert Event Description)',
+    proposer: '(Your Name Here)',
+    likes: '(0)',
+  },
+  {
+    activity: '(Event Name)',
+    description: '(Insert Event Description)',
+    proposer: '(Your Name Here)',
+    likes: '(0)',
+  }]
+
+
 
 var server = http.createServer( function (req, res) {
   var uri = url.parse(req.url)
@@ -14,7 +33,7 @@ var server = http.createServer( function (req, res) {
     case '/index.html':
       sendFile(res, 'Final.html')
       break
-    case '/posts':
+    case '/postsPokemon':
       sendPosts(req, res, 1);
       break;
     default:
@@ -22,24 +41,19 @@ var server = http.createServer( function (req, res) {
   }
 })
 
-var posts= [
-	{
-		activity: '(Event Name)',
-		description: '(Insert Event Description)',
-		proposer: '(Your Name Here)',
-		likes: '(0)',
-	}]
+// send big block of html via templates
 
 function sendPosts(req, res, pref) {
-	var str = "";
-	if(pref == 1){
+
+  var str = "";
+  if(pref == 1){
     var compiled = _.template(
-    "<div class='posts'>" +
+      "<div class='posts'>" +
       "<h2><%= activity %></h2>" +
       "<p>Description: <%= description %></p>" +
-      "<p>Proposer: <%= proposer %></p>" +
+      "<p>Proposed By: <%= proposer %></p>" +
       "<p>Likes: <%= likes %></p>" +
-    "</div>");
+      "</div>");
     posts.forEach( function(p, i) {
       str += compiled(p);
     });
@@ -64,6 +78,3 @@ function sendFile(res, filename) {
 
 server.listen(8080)
 console.log("Server is listening on 8080")
-
-
-

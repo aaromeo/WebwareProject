@@ -1,31 +1,170 @@
 <!DOCTYPE html>
 <html>
-	<script src="Final.js">
-		function sendPosts(pref) {
-			var req = new XMLHttpRequest();
+	<script src="Test.js"></script>
+	<style>
+		h1 {
+			font-family: 'Helvetica Neue';
 
-			req.open('GET', '/posts' + pref);
-
-			req.onreadystatechange = function() {
-		 	 handleRes(req);
-			}
-
-			req.send();
-
-			}
-
-
-		function handleRes(req) {
-		  if( req.readyState !== XMLHttpRequest.DONE )
-		    return;
-
-		  if(req.status === 200)
-		  	document.getElementById("yup").innerHTML = "";
-		    document.getElementById("yup").innerHTML += req.responseText;
 		}
 
+		div.container{
+			margin-left: 5%;
+			margin-right: 5%;
+			width: 90%;
+		}
+		div.left{
+			float: left;
+			width: 60%;
+		}
+		div.right{
+			float: right;
+			vertical-align: center;
+		}
+		.posts {
+		  padding: 1em;
+		  margin: 1em;
+		  background: white;
+		  border-radius: 10px;
+		  border-bottom: 1px solid #999;
+		}
+		html {
+		  background: #eee;
+		  font-family: Sans-Serif;
+		  line-height: 1.4;
+		}
 
-	</script>
+		h2 {
+		  font-weight: bold;
+		  font-size: 1.5em;
+		  margin: 0 0 0.5em 0;
+		} 
+		table, th, td {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+		    font-size: .1em;
+		    text-align: center;
+		}
+		table, th, td {
+		    padding: 7px;
+		    font-size: .1em;
+		}
+		th{
+			font-size: .1em;
+		}
+	</style>
+
+	<body>
+		<h1>
+			<center>Use this page to coordinate</center>
+		</h1>
+		<center>
+			<input type="button" name="Gen 1" value="Posts" onclick="sendPosts('Pokemon');">
+		</center>
+		<div class="container">
+			<div class="left">
+				<div id="content">
+				</div>
+			</div>
+			<div class="right">
+				<table>
+					<tr>
+						<th>Sunday</th>
+						<th>Monday</th>
+						<th>Tuesday</th>
+						<th>Wednesday</th>
+						<th>Thursday</th>
+						<th>Friday</th>
+						<th>Saturday</th>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+					</tr>
+					<tr>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+					</tr>
+					<tr>
+						<td>29</td>
+						<td>30</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+
+<script src="http://underscorejs.org/underscore-min.js"> </script>
+
+<script>
+
+function sendPosts(pref) {
+	var req = new XMLHttpRequest();
+
+	req.open('GET', '/posts' + pref);
+
+	req.onreadystatechange = function() {
+ 	 handleRes(req);
+	}
+
+	req.send();
+
+}
+
+
+function handleRes(req) {
+  if( req.readyState !== XMLHttpRequest.DONE )
+    return;
+
+  if(req.status === 200)
+  	document.getElementById("content").innerHTML = "";
+    document.getElementById("content").innerHTML += req.responseText;
+}
+
+</script>
+
+</html>
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+<html>
+
 
 	<style>
 		div.container{
@@ -120,7 +259,7 @@
 	</body>
 </html>
 
-
+-->
 
 
 
