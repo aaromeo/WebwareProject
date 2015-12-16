@@ -1,0 +1,84 @@
+/*Author: Josh Audibert*/
+html {
+	height: 100%;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  font-size: 1em;
+  color: #733448;
+  text-align: center;
+  background-color: #BFFFB9;
+  margin: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+body > div {
+  margin: 0 auto;
+}
+
+#wrapper {
+	min-height: 100%;
+	margin: 0 5em;
+}
+
+h1 {
+	font-size: 3em;
+	margin: 1em 0;
+}
+
+p {
+	margin: .7em 0;
+}
+
+header {
+	font-size: 3em;
+	padding: 1em;
+}
+
+table caption {
+	font-size: 2em;
+	padding: 5px;
+}
+
+table {
+	margin: 0 auto;
+}
+
+button, input {
+	font-size: 1.7em;
+	margin-bottom: 1em;
+}
+
+#login-popup {
+	position: relative;
+	/*display: inline-block;*/
+	z-index: 999;
+	background: #BFFFB9;
+	padding: 1em;
+}
+
+#overlay {
+	z-index: 5;
+	position: fixed;
+	background: rgba(0, 0, 0, .50);
+	width: 100%;
+	height: 100%;
+}
+
+.message {
+	text-align: left;
+}
+
+#table-holder td {
+	width: 2em;
+	height: 2em;
+}
+
+.copyright
+{
+  font-size: 0.8em;
+  margin: 3em 0 0 0;
+}
+
