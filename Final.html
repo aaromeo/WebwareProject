@@ -43,6 +43,7 @@
 		    border-collapse: collapse;
 		    font-size: .1em;
 		    text-align: center;
+		    background: white;
 		}
 		table, th, td {
 		    padding: 7px;
@@ -152,6 +153,8 @@ function handleRes(req) {
   	document.getElementById("content").innerHTML = "";
     document.getElementById("content").innerHTML += req.responseText;
 }
+
+sendPosts("Pokemon");
 
 </script>
 
