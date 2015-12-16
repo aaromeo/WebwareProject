@@ -36,6 +36,9 @@ var server = http.createServer( function (req, res) {
     case '/postsPokemon':
       sendPosts(req, res, 1);
       break;
+    case '/postsNewPost':
+    	sendPosts(req, res, 2);
+
     default:
       res.end('404 not found')
   }
@@ -57,6 +60,17 @@ function sendPosts(req, res, pref) {
     posts.forEach( function(p, i) {
       str += compiled(p);
     });
+  }
+  if(pref == 2){
+    str += 
+    "<h1> New Post</h1>" +
+    "<p>Event Name</p>" +
+    "<input type='text' name='Event Name' value=''>" +
+    "<br>" +
+    "<p>Description</p>" +
+    "<input type='text' name='Description' value=''>" +
+    "<br><br>" +
+    "<input type='submit' value='Insert'";
   }
   res.end( str );
 }
