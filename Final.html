@@ -8,17 +8,15 @@
 		}
 
 		div.container{
-			margin-left: 5%;
-			margin-right: 5%;
-			width: 90%;
+			margin-left: 2.5%;
+			margin-right: 2.5%;
+			width: 95%;
 		}
 		div.left{
 			float: left;
-			width: 60%;
 		}
 		div.right{
 			float: right;
-			vertical-align: center;
 		}
 		.posts {
 		  padding: 1em;
@@ -59,70 +57,283 @@
 			<center>Use this page to coordinate events</center>
 		</h1>
 		<center>
-			<input type="button" name="Gen 1" value="Posts" onclick="sendPosts('Pokemon');">
+			<input type="button" name="Gen 1" value="New Post" onclick="sendPosts('Pokemon');">
 		</center>
 		<div class="container">
-			<div class="left">
+			<div class="left" style="width: 60%;">
 				<div id="content">
 				</div>
 			</div>
 			<div class="right">
-				<table>
-					<tr>
-						<th>Sunday</th>
-						<th>Monday</th>
-						<th>Tuesday</th>
-						<th>Wednesday</th>
-						<th>Thursday</th>
-						<th>Friday</th>
-						<th>Saturday</th>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-					</tr>
-					<tr>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
-						<td>13</td>
-						<td>14</td>
-					</tr>
-					<tr>
-						<td>15</td>
-						<td>16</td>
-						<td>17</td>
-						<td>18</td>
-						<td>19</td>
-						<td>20</td>
-						<td>21</td>
-					</tr>
-					<tr>
-						<td>22</td>
-						<td>23</td>
-						<td>24</td>
-						<td>25</td>
-						<td>26</td>
-						<td>27</td>
-						<td>28</td>
-					</tr>
-					<tr>
-						<td>29</td>
-						<td>30</td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</table>
+				<div class="left" style="padding-right: 30px; padding-top: 15px;">
+					<table>
+						<tr>
+							<th colspan="7">December</th>
+						<tr>
+							<th>S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+						</tr>
+						<tr>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+							<td>30</td>
+							<td>31</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<!--<form action="/NewPost" method="POST">
+					<h1> New Post</h1>
+					<p>Event Name</p>
+					<input type="text" name="Event Name" value="">
+					<br>
+					<p>Description</p>
+					<input type="text" name="Description" value="">
+					<br><br>
+					<input type="submit" value="Insert">-->
+				<div class="right" style="padding-left: 30px; padding-top: 15px;">
+					<table>
+						<tr>
+							<th colspan="7">January</th>
+						<tr>
+							<th>S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>					
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>						
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+						</tr>
+						<tr>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+							<td>30</td>
+						</tr>
+						<tr>
+							<td>31</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="right">
+				<div class="left" style="padding-right: 30px; padding-top: 15px;">
+					<table>
+						<tr>
+							<th colspan="7">February</th>
+						<tr>
+							<th>S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+							<td>13</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+							<td>20</td>
+						</tr>
+						<tr>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+							<td>27</td>
+						</tr>
+						<tr>
+							<td>28</td>
+							<td>29</td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<!--<form action="/NewPost" method="POST">
+					<h1> New Post</h1>
+					<p>Event Name</p>
+					<input type="text" name="Event Name" value="">
+					<br>
+					<p>Description</p>
+					<input type="text" name="Description" value="">
+					<br><br>
+					<input type="submit" value="Insert">-->
+				<div class="right" style="padding-left: 30px; padding-top: 15px;">
+					<table>
+						<tr>
+							<th colspan="7">March</th>
+						<tr>
+							<th>S</th>
+							<th>M</th>
+							<th>T</th>
+							<th>W</th>
+							<th>T</th>
+							<th>F</th>
+							<th>S</th>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+							<td>11</td>
+							<td>12</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>14</td>
+							<td>15</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
+							<td>19</td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td>21</td>
+							<td>22</td>
+							<td>23</td>
+							<td>24</td>
+							<td>25</td>
+							<td>26</td>
+						</tr>
+						<tr>
+							<td>27</td>
+							<td>28</td>
+							<td>29</td>
+							<td>30</td>
+							<td>31</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</body>
