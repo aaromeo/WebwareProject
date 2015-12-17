@@ -16,12 +16,13 @@ app.use(bodyParser.urlencoded({
 
 var events = [
   {
-    date: "Dec18",
+    date: "Dec31",
     activity: 'Highland Trip',
     formattedDate: 'December 18th, 2015',
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: 0,
+    dislikes: 0,
     comments: []
   },
   {
@@ -31,6 +32,7 @@ var events = [
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: 0,
+    dislikes: 0,
     comments: []
   }]
 
@@ -43,7 +45,8 @@ app.get('/events', function (req, res) {
       "<p>Date: <%= formattedDate %></p>" +
       "<p>Description: <%= description %></p>" +
       "<p>Proposed By: <%= proposer %></p>" +
-      "<p>Likes: <%= likes %></p>" +
+      "<p><input id='like<%= index %>' type='button' name='new' value='Upvote' onclick='addLike(<%= index %>);'> (<%= likes %>)</p>" +
+      "<p><input id='dislike<%= index %>'type='button' name='new1' value='Downvote' onclick='addDislike(<%= index %>);'> (<%= dislikes %>)</p>" +
     "</div>");
   events.forEach( function(p, i) {
     p['index'] = i;
@@ -51,6 +54,14 @@ app.get('/events', function (req, res) {
   });
 
   res.end( str );
+});
+
+app.post('/incrementLikes', function(req, res){
+  events[req.body.id]['likes']= events[req.body.id]['likes'] + 1;
+});
+
+app.post('/decrementLikes', function(req, res){
+  events[req.body.id]['dislikes']= events[req.body.id]['dislikes'] + 1;
 });
 
 app.get('/event/:id', function (req, res) {
@@ -138,10 +149,11 @@ app.post('/addEvent', function(req, res) {
     date: req.body.date,
     description: req.body.description,
     proposer: "Placeholder",
-    likes: 0
+    comments: [],
+    likes: 0,
+    dislikes: 0
   };
   events.unshift(newEvent);
-
 });
 
 app.use('/', function(req, res) {
