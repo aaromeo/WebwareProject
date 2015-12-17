@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
 
 var events = [
   {
-    date: "Dec18",
+    date: "Dec31",
     activity: 'Highland Trip',
     formattedDate: 'December 18th, 2015',
     description: '(Insert Event Description)',

@@ -1,324 +1,330 @@
 <!DOCTYPE html>
 <html>
 	<style>
+		html, body {
+			font-family: 'Muli', Sans-Serif;
+			font-size: 1em;
+			text-align: center;
+		}
+
 		h1 {
 			font-family: 'Helvetica Neue';
+			text-align: left;
+			padding: 1em;
 
+		}
+
+		div.sidebar {
+		    position:fixed;
+		    width: 240px;
+		    right:5px; bottom: 7px;
 		}
 
 		div.container{
-			margin-left: 2.5%;
-			margin-right: 2.5%;
-			width: 95%;
-		}
-		div.left{
-			width: 50%;
-			float: left;
-		}
-		div.right{
-			width: 50%;
-			float: right;
+			margin: 0 240px 0 auto;
 		}
 		.events {
-		  padding: 1em;
-		  margin: 1em;
-		  background: white;
-		  border-radius: 10px;
-		  border-bottom: 1px solid #999;
+			text-align: left;
+			padding: 1em;
+			margin: 1em;
+			background: white;
+			border-radius: 10px;
+			border-bottom: 1px solid #999;
+			background: #eee;
+			font-family: Sans-Serif;
+			line-height: 1.4;
 		}
-		html {
-		  background: #eee;
-		  font-family: Sans-Serif;
-		  line-height: 1.4;
-		}
+		
 
 		h2 {
 		  font-weight: bold;
 		  font-size: 1.5em;
 		  margin: 0 0 0.5em 0;
 		} 
-		table, th, td {
+		table, th{
 		    border: 1px solid black;
 		    border-collapse: collapse;
 		    font-size: .1em;
 		    text-align: center;
 		    background: white;
 		}
-		table, th, td {
+		table, th{
 		    padding: 7px;
 		    font-size: .1em;
 		}
 		th{
 			font-size: .1em;
 		}
+		td{
+			border: 1px solid black;
+		    border-collapse: collapse;
+		    font-size: .1em;
+		    text-align: center;
+		    background: white;
+		    padding: 7px;
+		   	font-size: .1em;
+		   	width: 18px;
+		   	height: 18px;
+
+		}
 	</style>
 
 	<body>
-		<h1>
-			<center>Use this page to coordinate events</center>
-		</h1>
-		<center>
-			<input type="button" name="new" value="New Post" onclick="makeGet('/getNewEvent');">
-			<input type="button" name="new1" value="View post" onclick="makeGet('/events');">
-		</center>
 		<div class="container">
+			<h1>
+				Use this page to coordinate events
+			</h1>
+			<center>
+				<input type="button" name="new" value="New Post" onclick="makeGet('/getNewEvent');">
+				<input type="button" name="new1" value="View post" onclick="makeGet('/events');">
+			</center>
 			<div class="left">
 				<div id="content">
 				</div>
 			</div>
-			<div class="right">
-				<div class="left" style="padding-right: 30px; padding-top: 15px;">
-					<table>
-						<tr>
-							<th colspan="7">December</th>
-						<tr>
-							<th>S</th>
-							<th>M</th>
-							<th>T</th>
-							<th>W</th>
-							<th>T</th>
-							<th>F</th>
-							<th>S</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td id="Dec1">1</td>
-							<td id="Dec2">2</td>
-							<td id="Dec3">3</td>
-							<td id="Dec4">4</td>
-							<td id="Dec5">5</td>
-						</tr>
-						<tr>
-							<td id="Dec6">6</td>
-							<td id="Dec7">7</td>
-							<td id="Dec8">8</td>
-							<td id="Dec9">9</td>
-							<td id="Dec10">10</td>
-							<td id="Dec11">11</td>
-							<td id="Dec12">12</td>
-						</tr>
-						<tr>
-							<td id="Dec13">13</td>
-							<td id="Dec14">14</td>
-							<td id="Dec15">15</td>
-							<td id="Dec16">16</td>
-							<td id="Dec17">17</td>
-							<td id="Dec18">18</td>
-							<td id="Dec19">19</td>
-						</tr>
-						<tr>
-							<td id="Dec20">20</td>
-							<td id="Dec21">21</td>
-							<td id="Dec22">22</td>
-							<td id="Dec23">23</td>
-							<td id="Dec24">24</td>
-							<td id="Dec25">25</td>
-							<td id="Dec26">26</td>
-						</tr>
-						<tr>
-							<td id="Dec27">27</td>
-							<td id="Dec28">28</td>
-							<td id="Dec29">29</td>
-							<td id="Dec30">30</td>
-							<td id="Dec31">31</td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-				<div class="right" style="padding-left: 30px; padding-top: 15px;">
-					<table>
-						<tr>
-							<th colspan="7">January</th>
-						<tr>
-							<th>S</th>
-							<th>M</th>
-							<th>T</th>
-							<th>W</th>
-							<th>T</th>
-							<th>F</th>
-							<th>S</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td id="Jan1">1</td>
-							<td id="Jan2">2</td>
-						</tr>
-						<tr>
-							<td id="Jan3">3</td>
-							<td id="Jan4">4</td>
-							<td id="Jan5">5</td>
-							<td id="Jan6">6</td>
-							<td id="Jan7">7</td>
-							<td id="Jan8">8</td>
-							<td id="Jan9">9</td>					
-						</tr>
-						<tr>
-							<td id="Jan10">10</td>
-							<td id="Jan11">11</td>
-							<td id="Jan12">12</td>
-							<td id="Jan13">13</td>
-							<td id="Jan14">14</td>
-							<td id="Jan15">15</td>
-							<td id="Jan16">16</td>
-						</tr>
-						<tr>
-							<td id="Jan17">17</td>
-							<td id="Jan18">18</td>
-							<td id="Jan19">19</td>						
-							<td id="Jan20">20</td>
-							<td id="Jan21">21</td>
-							<td id="Jan22">22</td>
-							<td id="Jan23">23</td>
-						</tr>
-						<tr>
-							<td id="Jan24">24</td>
-							<td id="Jan25">25</td>
-							<td id="Jan26">26</td>
-							<td id="Jan27">27</td>
-							<td id="Jan28">28</td>
-							<td id="Jan29">29</td>
-							<td id="Jan30">30</td>
-						</tr>
-						<tr>
-							<td id="Jan31">31</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div class="right">
-				<div class="left" style="padding-right: 30px; padding-top: 15px;">
-					<table>
-						<tr>
-							<th colspan="7">February</th>
-						<tr>
-							<th>S</th>
-							<th>M</th>
-							<th>T</th>
-							<th>W</th>
-							<th>T</th>
-							<th>F</th>
-							<th>S</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td id="Feb1">1</td>
-							<td id="Feb2">2</td>
-							<td id="Feb3">3</td>
-							<td id="Feb4">4</td>
-							<td id="Feb5">5</td>
-							<td id="Feb6">6</td>
-						</tr>
-						<tr>
-							<td id="Feb7">7</td>
-							<td id="Feb8">8</td>
-							<td id="Feb9">9</td>
-							<td id="Feb10">10</td>
-							<td id="Feb11">11</td>
-							<td id="Feb12">12</td>
-							<td id="Feb13">13</td>
-						</tr>
-						<tr>
-							<td id="Feb14">14</td>
-							<td id="Feb15">15</td>
-							<td id="Feb16">16</td>
-							<td id="Feb17">17</td>
-							<td id="Feb18">18</td>
-							<td id="Feb19">19</td>
-							<td id="Feb20">20</td>
-						</tr>
-						<tr>
-							<td id="Feb21">21</td>
-							<td id="Feb22">22</td>
-							<td id="Feb23">23</td>
-							<td id="Feb24">24</td>
-							<td id="Feb25">25</td>
-							<td id="Feb26">26</td>
-							<td id="Feb27">27</td>
-						</tr>
-						<tr>
-							<td id="Feb28">28</td>
-							<td id="Feb29">29</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-				<div class="right" style="padding-left: 30px; padding-top: 15px;">
-					<table>
-						<tr>
-							<th colspan="7">March</th>
-						<tr>
-							<th>S</th>
-							<th>M</th>
-							<th>T</th>
-							<th>W</th>
-							<th>T</th>
-							<th>F</th>
-							<th>S</th>
-						</tr>
-						<tr>
-							<td></td>
-							<td></td>
-							<td id="Mar1">1</td>
-							<td id="Mar2">2</td>
-							<td id="Mar3">3</td>
-							<td id="Mar4">4</td>
-							<td id="Mar5">5</td>
-						</tr>
-						<tr>
-							<td id="Mar6">6</td>
-							<td id="Mar7">7</td>
-							<td id="Mar8">8</td>
-							<td id="Mar9">9</td>
-							<td id="Mar10">10</td>
-							<td id="Mar11">11</td>
-							<td id="Mar12">12</td>
-						</tr>
-						<tr>
-							<td id="Mar13">13</td>
-							<td id="Mar14">14</td>
-							<td id="Mar15">15</td>
-							<td id="Mar16">16</td>
-							<td id="Mar17">17</td>
-							<td id="Mar18">18</td>
-							<td id="Mar19">19</td>
-						</tr>
-						<tr>
-							<td id="Mar20">20</td>
-							<td id="Mar21">21</td>
-							<td id="Mar22">22</td>
-							<td id="Mar23">23</td>
-							<td id="Mar24">24</td>
-							<td id="Mar25">25</td>
-							<td id="Mar26">26</td>
-						</tr>
-						<tr>
-							<td id="Mar27">27</td>
-							<td id="Mar28">28</td>
-							<td id="Mar29">29</td>
-							<td id="Mar30">30</td>
-							<td id="Mar31">31</td>
-							<td></td>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-			</div>
+		</div>
+		<div class="sidebar">
+			<table>
+				<tr>
+					<th colspan="7">December</th>
+				<tr>
+					<th>S</th>
+					<th>M</th>
+					<th>T</th>
+					<th>W</th>
+					<th>T</th>
+					<th>F</th>
+					<th>S</th>
+				</tr>
+				<!-- <tr>
+					<td></td>
+					<td></td>
+					<td id="Dec1">1</td>
+					<td id="Dec2">2</td>
+					<td id="Dec3">3</td>
+					<td id="Dec4">4</td>
+					<td id="Dec5">5</td>
+				</tr>
+				<tr>
+					<td id="Dec6">6</td>
+					<td id="Dec7">7</td>
+					<td id="Dec8">8</td>
+					<td id="Dec9">9</td>
+					<td id="Dec10">10</td>
+					<td id="Dec11">11</td>
+					<td id="Dec12">12</td>
+				</tr>
+				<tr>
+					<td id="Dec13">13</td>
+					<td id="Dec14">14</td>
+					<td id="Dec15">15</td>
+					<td id="Dec16">16</td>
+					<td id="Dec17">17</td>
+					<td id="Dec18">18</td>
+					<td id="Dec19">19</td>
+				</tr>
+				<tr>
+					<td id="Dec20">20</td>
+					<td id="Dec21">21</td>
+					<td id="Dec22">22</td>
+					<td id="Dec23">23</td>
+					<td id="Dec24">24</td>
+					<td id="Dec25">25</td>
+					<td id="Dec26">26</td> -->
+				</tr>
+				<tr>
+					<td id="Dec27">27</td>
+					<td id="Dec28">28</td>
+					<td id="Dec29">29</td>
+					<td id="Dec30">30</td>
+					<td id="Dec31">31</td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th colspan="7">January</th>
+				<tr>
+					<th>S</th>
+					<th>M</th>
+					<th>T</th>
+					<th>W</th>
+					<th>T</th>
+					<th>F</th>
+					<th>S</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td id="Jan1">1</td>
+					<td id="Jan2">2</td>
+				</tr>
+				<tr>
+					<td id="Jan3">3</td>
+					<td id="Jan4">4</td>
+					<td id="Jan5">5</td>
+					<td id="Jan6">6</td>
+					<td id="Jan7">7</td>
+					<td id="Jan8">8</td>
+					<td id="Jan9">9</td>					
+				</tr>
+				<tr>
+					<td id="Jan10">10</td>
+					<td id="Jan11">11</td>
+					<td id="Jan12">12</td>
+					<td id="Jan13">13</td>
+					<td id="Jan14">14</td>
+					<td id="Jan15">15</td>
+					<td id="Jan16">16</td>
+				</tr>
+				<tr>
+					<td id="Jan17">17</td>
+					<td id="Jan18">18</td>
+					<td id="Jan19">19</td>						
+					<td id="Jan20">20</td>
+					<td id="Jan21">21</td>
+					<td id="Jan22">22</td>
+					<td id="Jan23">23</td>
+				</tr>
+				<tr>
+					<td id="Jan24">24</td>
+					<td id="Jan25">25</td>
+					<td id="Jan26">26</td>
+					<td id="Jan27">27</td>
+					<td id="Jan28">28</td>
+					<td id="Jan29">29</td>
+					<td id="Jan30">30</td>
+				</tr>
+				<tr>
+					<td id="Jan31">31</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th colspan="7">February</th>
+				<tr>
+					<th>S</th>
+					<th>M</th>
+					<th>T</th>
+					<th>W</th>
+					<th>T</th>
+					<th>F</th>
+					<th>S</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td id="Feb1">1</td>
+					<td id="Feb2">2</td>
+					<td id="Feb3">3</td>
+					<td id="Feb4">4</td>
+					<td id="Feb5">5</td>
+					<td id="Feb6">6</td>
+				</tr>
+				<tr>
+					<td id="Feb7">7</td>
+					<td id="Feb8">8</td>
+					<td id="Feb9">9</td>
+					<td id="Feb10">10</td>
+					<td id="Feb11">11</td>
+					<td id="Feb12">12</td>
+					<td id="Feb13">13</td>
+				</tr>
+				<tr>
+					<td id="Feb14">14</td>
+					<td id="Feb15">15</td>
+					<td id="Feb16">16</td>
+					<td id="Feb17">17</td>
+					<td id="Feb18">18</td>
+					<td id="Feb19">19</td>
+					<td id="Feb20">20</td>
+				</tr>
+				<tr>
+					<td id="Feb21">21</td>
+					<td id="Feb22">22</td>
+					<td id="Feb23">23</td>
+					<td id="Feb24">24</td>
+					<td id="Feb25">25</td>
+					<td id="Feb26">26</td>
+					<td id="Feb27">27</td>
+				</tr>
+				<tr>
+					<td id="Feb28">28</td>
+					<td id="Feb29">29</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th colspan="7">March</th>
+				<tr>
+					<th>S</th>
+					<th>M</th>
+					<th>T</th>
+					<th>W</th>
+					<th>T</th>
+					<th>F</th>
+					<th>S</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td id="Mar1">1</td>
+					<td id="Mar2">2</td>
+					<td id="Mar3">3</td>
+					<td id="Mar4">4</td>
+					<td id="Mar5">5</td>
+				</tr>
+				<tr>
+					<td id="Mar6">6</td>
+					<td id="Mar7">7</td>
+					<td id="Mar8">8</td>
+					<td id="Mar9">9</td>
+					<td id="Mar10">10</td>
+					<td id="Mar11">11</td>
+					<td id="Mar12">12</td>
+				</tr>
+				<tr>
+					<td id="Mar13">13</td>
+					<td id="Mar14">14</td>
+					<td id="Mar15">15</td>
+					<td id="Mar16">16</td>
+					<td id="Mar17">17</td>
+					<td id="Mar18">18</td>
+					<td id="Mar19">19</td>
+				</tr>
+				<!-- <tr>
+					<td id="Mar20">20</td>
+					<td id="Mar21">21</td>
+					<td id="Mar22">22</td>
+					<td id="Mar23">23</td>
+					<td id="Mar24">24</td>
+					<td id="Mar25">25</td>
+					<td id="Mar26">26</td>
+				</tr>
+				<tr>
+					<td id="Mar27">27</td>
+					<td id="Mar28">28</td>
+					<td id="Mar29">29</td>
+					<td id="Mar30">30</td>
+					<td id="Mar31">31</td>
+					<td></td>
+					<td></td>
+				</tr> -->
+			</table>
 		</div>
 	</body>
 
@@ -465,6 +471,10 @@ function setEventListeners() {
 	console.log(events);
 	for (var i = 0; i < events.length; i++) {
 		console.log(i);
+		console.log(events[i]);
+		var date = events[i].innerHTML.match(/Q([^"]+)Q/)[1];
+		var calendarEl = document.getElementById(date);
+		calendarEl.style.background = "#FE9A2E";
 		events[i].removeEventListener("mouseenter", highlightDate);
 		events[i].removeEventListener("mouseleave", unhighlightDate);
 		events[i].addEventListener("mouseenter", highlightDate);
@@ -481,7 +491,7 @@ function highlightDate(evt) {
 function unhighlightDate(evt) {
 	var date = evt.path[0].innerHTML.match(/Q([^"]+)Q/)[1];
 	var calendarEl = document.getElementById(date);
-	calendarEl.style.background = "initial";
+	calendarEl.style.background = "#FE9A2E";
 	console.log(evt);
 }
 
