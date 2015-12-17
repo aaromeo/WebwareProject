@@ -37,13 +37,14 @@ app.get('/events', function (req, res) {
   var compiled = _.template(
     "<div class='events'>" +
       "<div hidden>Q<%= date %>Q</div>" +
-      "<h2><%= activity %></h2>" +
+      "<h2><a id='<%= index %>' href='#' onclick='getEvent(<%= index %>);return false;'><%= activity %></a></h2>" +
       "<p>Date: <%= formattedDate %></p>" +
       "<p>Description: <%= description %></p>" +
       "<p>Proposed By: <%= proposer %></p>" +
       "<p>Likes: <%= likes %></p>" +
     "</div>");
   events.forEach( function(p, i) {
+    p['index'] = i;
     str += compiled(p);
   });
 
@@ -52,7 +53,38 @@ app.get('/events', function (req, res) {
   res.end( str );
 });
 
-app.get('/getNewEvent', function(req, res) {
+app.get('/event/:id', function (req, res) {
+  var id = req.params.id;
+  var str = "";
+  var compiled = _.template(
+    "<div id='eventpage'>" +
+      "<div id='title'>" +
+        "<button type='button' onclick=\"makeGet('/events');\">Back to Events</button>   " +
+        "<%= activity %>" +
+      "</div>" +
+      "<hr>" +
+      "<div id='eventcontent'>" +
+        "<p>Date: <%= formattedDate %></p>" +
+        "<p>Description: <%= description %></p>" +
+        "<p>Proposed By: <%= proposer %></p>" +
+        "<p>Likes: <%= likes %></p>" +
+      "</div>" +
+      "<hr>" + 
+      "<div id='comments'>" +
+        "<h2>Comments</h2>" +
+        "<div id='comment-holder'>" +
+        "</div>" +
+        // add label and input here
+      "</div>" +
+    "</div>");
+  events[id]["index"] = id;
+  str += compiled(events[id]);
+  console.log(str);
+
+  res.end( str );
+});
+
+app.get('/getNewEvent', function (req, res) {
   var str = "";
   str += 
   "<h1> New Post</h1>" +
@@ -72,7 +104,6 @@ app.get('/getNewEvent', function(req, res) {
 });
 
 app.post('/addEvent', function(req, res) {
-  console.log("Adding event");
   var newEvent = {
     activity: req.body.eventname,
     formattedDate: req.body.formattedDate,
@@ -81,7 +112,6 @@ app.post('/addEvent', function(req, res) {
     proposer: "Placeholder",
     likes: 0
   };
-  console.log(newEvent);
   events.unshift(newEvent);
 
 });
