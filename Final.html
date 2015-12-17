@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-	<script src="Test.js"></script>
 	<style>
 		h1 {
 			font-family: 'Helvetica Neue';
@@ -57,8 +56,8 @@
 			<center>Use this page to coordinate events</center>
 		</h1>
 		<center>
-			<input type="button" name="new" value="New Post" onclick="sendPosts('NewPost');">
-			<input type="button" name="new1" value="View post" onclick="sendPosts('Pokemon');">
+			<input type="button" name="new" value="New Post" onclick="makeGet('/getNewEvent');">
+			<input type="button" name="new1" value="View post" onclick="makeGet('/events');">
 		</center>
 		<div class="container">
 			<div class="left" style="width: 60%;">
@@ -330,34 +329,47 @@
 		</div>
 	</body>
 
-<script src="http://underscorejs.org/underscore-min.js"> </script>
-
+<script src="http://underscorejs.org/underscore-min.js"> 
+</script>
 <script>
 
-function sendPosts(pref) {
-	var req = new XMLHttpRequest();
+function addEvent() {
+	console.log("Clicked button!");
+	var eventname = document.getElementById('eventname').value;
+	var date = document.getElementById('date').value;
+	var description = document.getElementById('description').value;
 
-	req.open('GET', '/posts' + pref);
+	var req = new XMLHttpRequest();
+	req.open('POST', '/addEvent', true);
+    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    req.send('eventname='+eventname+'&date='+date+'&description='+description);
+
+    makeGet('/events');
+}
+
+function makeGet(url) {
+	var req = new XMLHttpRequest();
 
 	req.onreadystatechange = function() {
  	 handleRes(req);
 	}
 
+	req.open('GET', url);
 	req.send();
-
 }
-
 
 function handleRes(req) {
   if( req.readyState !== XMLHttpRequest.DONE )
     return;
 
-  if(req.status === 200)
+  if(req.status === 200) {
   	document.getElementById("content").innerHTML = "";
     document.getElementById("content").innerHTML += req.responseText;
+	}
 }
 
-sendPosts("Pokemon");
+makeGet('/events');
 
 </script>
 
