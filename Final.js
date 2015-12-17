@@ -69,8 +69,10 @@ app.get('/event/:id', function (req, res) {
   var str = "";
   var compiled = _.template(
     "<div id='eventpage'>" +
-      "<div id='title'>" +
+      "<div id='back'>" +
         "<button type='button' onclick=\"makeGet('/events');\">Back to Events</button>   " +
+      "</div>" +
+      "<div id='title'>" +
         "<%= activity %>" +
       "</div>" +
       "<hr>" +
@@ -78,7 +80,8 @@ app.get('/event/:id', function (req, res) {
         "<p>Date: <%= formattedDate %></p>" +
         "<p>Description: <%= description %></p>" +
         "<p>Proposed By: <%= proposer %></p>" +
-        "<p>Likes: <%= likes %></p>" +
+        "<p><input id='like<%= index %>' type='button' name='new' value='Upvote' onclick='addLike(<%= index %>);'> (<%= likes %>)</p>" +
+        "<p><input id='dislike<%= index %>'type='button' name='new1' value='Downvote' onclick='addDislike(<%= index %>);'> (<%= dislikes %>)</p>" +
       "</div>" +
       "<hr>" + 
       "<div id='comments'>" +
@@ -127,6 +130,7 @@ app.get('/getNewEvent', function (req, res) {
   var str = "";
   str += 
   "<h1> New Post</h1>" +
+  "<button type='button' onclick=\"makeGet('/events');\">Back to Events</button>   " +
   "<form onsubmit='return false;'>" + 
     "<label for='eventname'>Event Name: </label>" +
     "<input id='eventname' type='text' name='eventname'>" +

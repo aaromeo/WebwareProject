@@ -9,7 +9,7 @@
 
 		h1 {
 			font-family: 'Helvetica Neue';
-			text-align: left;
+			text-align: center;
 			padding: 1em;
 
 		}
@@ -23,6 +23,31 @@
 		div.container{
 			margin: 0 240px 0 auto;
 		}
+
+		#title {
+			font-size: 2em;
+			padding: 1em;
+		}
+
+		button {
+			font-size: 1.3em;
+		}
+
+		.comment {
+			text-align: left;
+			padding: 0 2em;
+		}
+
+		input#comment {
+			font-size: 1.2em;
+		}
+
+		#eventcontent {
+			padding: .5em 0 .5em 8em;
+			background: #eee;
+			text-align: left;
+		}
+
 		.events {
 			text-align: left;
 			padding: 1em;
@@ -35,11 +60,13 @@
 			line-height: 1.4;
 		}
 		
+		#back {
+			text-align: left;
+		}
 
 		h2 {
 		  font-weight: bold;
 		  font-size: 1.5em;
-		  margin: 0 0 0.5em 0;
 		} 
 		table, th{
 		    border: 1px solid black;
@@ -71,11 +98,10 @@
 	<body>
 		<div class="container">
 			<h1>
-				Use this page to coordinate events
+				Set up events for Thailand IQP
 			</h1>
 			<center>
 				<input type="button" name="new" value="New Post" onclick="makeGet('/getNewEvent');">
-				<input type="button" name="new1" value="View post" onclick="makeGet('/events');">
 			</center>
 			<div class="left">
 				<div id="content">
