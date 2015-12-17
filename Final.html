@@ -500,8 +500,26 @@ function addEvent() {
     makeGet('/events');
 }
 
+function addComment(id) {
+	var comment = document.getElementById("comment").value;
+	document.getElementById("comment").value = "";
+
+	var reqp = new XMLHttpRequest();
+	reqp.open('POST', '/addComment', true);
+	reqp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+	reqp.send('id='+id+'&comment='+comment+'&username='+'Get this from cookies');
+
+	updateComments(id);
+}
+
+function updateComments(id) {
+	makeGet('/event/'+id+'/comments', 'comments-holder');
+}
+
 function getEvent(id) {
 	makeGet('/event/'+id);
+	updateComments(id);
 }
 
 function changeDate(date){
@@ -527,25 +545,25 @@ function idDate(date){
   return str;
 }
 
-function makeGet(url) {
+function makeGet(url, elementId) {
+	if (typeof(elementId)==='undefined') elementId = 'content';
 	var req = new XMLHttpRequest();
 
 	req.onreadystatechange = function() {
- 	 handleRes(req);
+ 	 handleRes(req, elementId);
 	}
 
 	req.open('GET', url);
 	req.send();
 }
 
-function handleRes(req) {
+function handleRes(req, elementId) {
   if( req.readyState !== XMLHttpRequest.DONE )
     return;
 
   if(req.status === 200) {
-  	document.getElementById("content").innerHTML = "";
-  	console.log(req.responseText);
-    document.getElementById("content").innerHTML += req.responseText;
+  	document.getElementById(elementId).innerHTML = "";
+    document.getElementById(elementId).innerHTML += req.responseText;
     setEventListeners();
 	}
 }

@@ -22,6 +22,7 @@ var events = [
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: 0,
+    comments: []
   },
   {
     date: "Mar3",
@@ -30,6 +31,7 @@ var events = [
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: 0,
+    comments: []
   }]
 
 app.get('/events', function (req, res) {
@@ -47,8 +49,6 @@ app.get('/events', function (req, res) {
     p['index'] = i;
     str += compiled(p);
   });
-
-  console.log(events);
 
   res.end( str );
 });
@@ -72,14 +72,42 @@ app.get('/event/:id', function (req, res) {
       "<hr>" + 
       "<div id='comments'>" +
         "<h2>Comments</h2>" +
-        "<div id='comment-holder'>" +
+        "<div id='comments-holder'" +
         "</div>" +
-        // add label and input here
+        "</div id='comment-form'>" +
+          "<form onsubmit='return false;'>" +
+            "<input id='comment' type='text' name='comment' />" +
+            "<button type='submit' onclick='addComment(<%= index %>);'>Send</button>" +
+          "</form>" +
+        "</div>" +
       "</div>" +
     "</div>");
   events[id]["index"] = id;
   str += compiled(events[id]);
-  console.log(str);
+
+  res.end( str );
+});
+
+app.post('/addComment', function (req, res) {
+  var comment = {
+    comment: req.body.comment,
+    username: req.body.username
+  };
+  events[req.body.id]['comments'].push(comment);
+
+  res.end();
+});
+
+app.get('/event/:id/comments', function (req, res) {
+  var id = req.params.id;
+  var str = "";
+  var compiled = _.template(
+    "<div class='comment'>" +
+      "<p><strong><%= username %></strong>: <%= comment %></p>" +
+    "<hr></div>");
+  events[id]['comments'].forEach(function(comment, i) {
+    str += compiled(comment);
+  });
 
   res.end( str );
 });
