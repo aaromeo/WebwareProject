@@ -16,15 +16,17 @@ app.use(bodyParser.urlencoded({
 
 var events = [
   {
-    activity: '(Event Name)',
-    date: 'December 18th, 2015',
+    date: "Dec18",
+    activity: 'Highland Trip',
+    formattedDate: 'December 18th, 2015',
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: 0,
   },
   {
-    activity: '(Event Name)',
-    date: 'December 18th, 2015',
+    date: "Mar3",
+    activity: 'Chiang Mai!',
+    formattedDate: 'March 3rd, 2016',
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: 0,
@@ -33,9 +35,10 @@ var events = [
 app.get('/events', function (req, res) {
   var str = "";
   var compiled = _.template(
-    "<div class='posts'>" +
+    "<div class='events'>" +
+      "<div hidden>Q<%= date %>Q</div>" +
       "<h2><%= activity %></h2>" +
-      "<p>Date: <%= date %></p>" +
+      "<p>Date: <%= formattedDate %></p>" +
       "<p>Description: <%= description %></p>" +
       "<p>Proposed By: <%= proposer %></p>" +
       "<p>Likes: <%= likes %></p>" +
@@ -72,6 +75,7 @@ app.post('/addEvent', function(req, res) {
   console.log("Adding event");
   var newEvent = {
     activity: req.body.eventname,
+    formattedDate: req.body.formattedDate,
     date: req.body.date,
     description: req.body.description,
     proposer: "Placeholder",
