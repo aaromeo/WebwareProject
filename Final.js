@@ -1,3 +1,4 @@
+
 var http = require('http')
   , express = require('express')
   , _ = require('underscore')
@@ -126,18 +127,21 @@ app.get('/event/:id/comments', function (req, res) {
 app.get('/getNewEvent', function (req, res) {
   var str = "";
   str += 
-  "<h1> New Post</h1>" +
-  "<form onsubmit='return false;'>" + 
+  "<div class='events'>"+
+  "<h1 style='padding: 0 1em; text-align: center; font-size: 3em;'> New Post</h1>" +
+  "<form onsubmit='return false;' style='font-size: 1.5em;'>" + 
     "<label for='eventname'>Event Name: </label>" +
-    "<input id='eventname' type='text' name='eventname'>" +
-    "<br>" +
-    "<input id='date' type='date'></input>" +
-    "<br>" +
-    "<label for='description'>Description: </label>" +
-    "<input id='description' type='text' name='Description' value=''>" +
+    "<input id='eventname' type='text' name='eventname' style='font-size: 1em; width: 100%;'>" +
     "<br><br>" +
-    "<input type='button' value='Add Event' onclick='addEvent();' />" +
-  "</form>";
+    "<label for='date'>Date: </label>"+
+    "<input id='date' type='date' style='font-size: 1em; width: 100%;'></input>" +
+    "<br><br>" +
+    "<label for='description'>Description: </label>" +
+    "<input id='description' type='text' name='Description' value='' style='font-size: 1em; width: 100%;'>" +
+    "<br><br>" +
+    "<input type='button' value='Add Event' onclick='addEvent();' style='font-size: 5em; width: 100%;' />" +
+  "</form>"+
+  "</div>";
 
   res.end( str );
 });
