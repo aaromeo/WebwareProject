@@ -44,7 +44,6 @@ app.get('/events', function (req, res) {
       "<div hidden>Q<%= date %>Q</div>" +
       "<h2><a id='<%= index %>' href='#' onclick='getEvent(<%= index %>);return false;'><%= activity %></a></h2>" +
       "<p>Date: <%= formattedDate %></p>" +
-      "<p>Description: <%= description %></p>" +
       "<p>Proposed By: <%= proposer %></p>" +
       "<p><input id='like<%= index %>' type='button' name='new' value='Upvote' onclick='addLike(<%= index %>);'> (<%= likes %>)</p>" +
       "<p><input id='dislike<%= index %>'type='button' name='new1' value='Downvote' onclick='addDislike(<%= index %>);'> (<%= dislikes %>)</p>" +
@@ -131,8 +130,10 @@ app.get('/getNewEvent', function (req, res) {
   var str = "";
   str += 
   "<div class='events'>"+
+  "<div id='back'>" +
+    "<button type='button' onclick=\"makeGet('/events');\">Back to Events</button>   " +
+  "</div>" +
   "<h1 style='padding: 0 1em; text-align: center; font-size: 3em;'> New Post</h1>" +
-  "<button type='button' onclick=\"makeGet('/events');\">Back to Events</button>   " +
   "<form onsubmit='return false;' style='font-size: 1.5em;'>" + 
     "<label for='eventname'>Event Name: </label>" +
     "<input id='eventname' type='text' name='eventname' style='font-size: 1em; width: 100%;'>" +
@@ -156,7 +157,7 @@ app.post('/addEvent', function(req, res) {
     formattedDate: req.body.formattedDate,
     date: req.body.date,
     description: req.body.description,
-    proposer: "Placeholder",
+    proposer: req.body.username,
     comments: [],
     likes: 0,
     dislikes: 0

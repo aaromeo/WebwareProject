@@ -59,6 +59,27 @@
 			font-family: Sans-Serif;
 			line-height: 1.4;
 		}
+
+		#login-popup {
+			position: relative;
+			/*display: inline-block;*/
+			z-index: 999;
+			background: #BFFFB9;
+			padding: 1em;
+		}
+
+		#wrapper {
+			min-height: 100%;
+			margin: 0 5em;
+		}
+
+		#overlay {
+			z-index: 5;
+			position: fixed;
+			background: rgba(0, 0, 0, .50);
+			width: 100%;
+			height: 100%;
+		}
 		
 		#back {
 			text-align: left;
@@ -96,260 +117,270 @@
 	</style>
 
 	<body>
-		<div class="container">
-			<h1>
-				Set up events for Thailand IQP
-			</h1>
-			<center>
-				<input type="button" name="new" value="New Post" onclick="makeGet('/getNewEvent');">
-			</center>
-			<div class="left">
-				<div id="content">
+		<div id="overlay"></div>
+		<div id="wrapper">
+			<div class="container">
+				<h1>
+					Set up events for Thailand IQP
+				</h1>
+				<center>
+					<input type="button" name="new" value="New Post" onclick="makeGet('/getNewEvent');">
+				</center>
+				<div class="left">
+					<div id="content">
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="sidebar">
-			<table>
-				<tr>
-					<th class='month' colspan="7">December</th>
-				<tr>
-					<th>S</th>
-					<th>M</th>
-					<th>T</th>
-					<th>W</th>
-					<th>T</th>
-					<th>F</th>
-					<th>S</th>
-				</tr>
-				<!-- <tr>
-					<td></td>
-					<td></td>
-					<td id="Dec1">1</td>
-					<td id="Dec2">2</td>
-					<td id="Dec3">3</td>
-					<td id="Dec4">4</td>
-					<td id="Dec5">5</td>
-				</tr>
-				<tr>
-					<td id="Dec6">6</td>
-					<td id="Dec7">7</td>
-					<td id="Dec8">8</td>
-					<td id="Dec9">9</td>
-					<td id="Dec10">10</td>
-					<td id="Dec11">11</td>
-					<td id="Dec12">12</td>
-				</tr>
-				<tr>
-					<td id="Dec13">13</td>
-					<td id="Dec14">14</td>
-					<td id="Dec15">15</td>
-					<td id="Dec16">16</td>
-					<td id="Dec17">17</td>
-					<td id="Dec18">18</td>
-					<td id="Dec19">19</td>
-				</tr>
-				<tr>
-					<td id="Dec20">20</td>
-					<td id="Dec21">21</td>
-					<td id="Dec22">22</td>
-					<td id="Dec23">23</td>
-					<td id="Dec24">24</td>
-					<td id="Dec25">25</td>
-					<td id="Dec26">26</td> -->
-				</tr>
-				<tr>
-					<td id="Dec27">27</td>
-					<td id="Dec28">28</td>
-					<td id="Dec29">29</td>
-					<td id="Dec30">30</td>
-					<td id="Dec31">31</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<th class='month' colspan="7">January</th>
-				<tr>
-					<th>S</th>
-					<th>M</th>
-					<th>T</th>
-					<th>W</th>
-					<th>T</th>
-					<th>F</th>
-					<th>S</th>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td id="Jan1">1</td>
-					<td id="Jan2">2</td>
-				</tr>
-				<tr>
-					<td id="Jan3">3</td>
-					<td id="Jan4">4</td>
-					<td id="Jan5">5</td>
-					<td id="Jan6">6</td>
-					<td id="Jan7">7</td>
-					<td id="Jan8">8</td>
-					<td id="Jan9">9</td>					
-				</tr>
-				<tr>
-					<td id="Jan10">10</td>
-					<td id="Jan11">11</td>
-					<td id="Jan12">12</td>
-					<td id="Jan13">13</td>
-					<td id="Jan14">14</td>
-					<td id="Jan15">15</td>
-					<td id="Jan16">16</td>
-				</tr>
-				<tr>
-					<td id="Jan17">17</td>
-					<td id="Jan18">18</td>
-					<td id="Jan19">19</td>						
-					<td id="Jan20">20</td>
-					<td id="Jan21">21</td>
-					<td id="Jan22">22</td>
-					<td id="Jan23">23</td>
-				</tr>
-				<tr>
-					<td id="Jan24">24</td>
-					<td id="Jan25">25</td>
-					<td id="Jan26">26</td>
-					<td id="Jan27">27</td>
-					<td id="Jan28">28</td>
-					<td id="Jan29">29</td>
-					<td id="Jan30">30</td>
-				</tr>
-				<tr>
-					<td id="Jan31">31</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<th class='month' colspan="7">February</th>
-				<tr>
-					<th>S</th>
-					<th>M</th>
-					<th>T</th>
-					<th>W</th>
-					<th>T</th>
-					<th>F</th>
-					<th>S</th>
-				</tr>
-				<tr>
-					<td></td>
-					<td id="Feb1">1</td>
-					<td id="Feb2">2</td>
-					<td id="Feb3">3</td>
-					<td id="Feb4">4</td>
-					<td id="Feb5">5</td>
-					<td id="Feb6">6</td>
-				</tr>
-				<tr>
-					<td id="Feb7">7</td>
-					<td id="Feb8">8</td>
-					<td id="Feb9">9</td>
-					<td id="Feb10">10</td>
-					<td id="Feb11">11</td>
-					<td id="Feb12">12</td>
-					<td id="Feb13">13</td>
-				</tr>
-				<tr>
-					<td id="Feb14">14</td>
-					<td id="Feb15">15</td>
-					<td id="Feb16">16</td>
-					<td id="Feb17">17</td>
-					<td id="Feb18">18</td>
-					<td id="Feb19">19</td>
-					<td id="Feb20">20</td>
-				</tr>
-				<tr>
-					<td id="Feb21">21</td>
-					<td id="Feb22">22</td>
-					<td id="Feb23">23</td>
-					<td id="Feb24">24</td>
-					<td id="Feb25">25</td>
-					<td id="Feb26">26</td>
-					<td id="Feb27">27</td>
-				</tr>
-				<tr>
-					<td id="Feb28">28</td>
-					<td id="Feb29">29</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<th class='month' colspan="7">March</th>
-				<tr>
-					<th>S</th>
-					<th>M</th>
-					<th>T</th>
-					<th>W</th>
-					<th>T</th>
-					<th>F</th>
-					<th>S</th>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td id="Mar1">1</td>
-					<td id="Mar2">2</td>
-					<td id="Mar3">3</td>
-					<td id="Mar4">4</td>
-					<td id="Mar5">5</td>
-				</tr>
-				<tr>
-					<td id="Mar6">6</td>
-					<td id="Mar7">7</td>
-					<td id="Mar8">8</td>
-					<td id="Mar9">9</td>
-					<td id="Mar10">10</td>
-					<td id="Mar11">11</td>
-					<td id="Mar12">12</td>
-				</tr>
-				<tr>
-					<td id="Mar13">13</td>
-					<td id="Mar14">14</td>
-					<td id="Mar15">15</td>
-					<td id="Mar16">16</td>
-					<td id="Mar17">17</td>
-					<td id="Mar18">18</td>
-					<td id="Mar19">19</td>
-				</tr>
-				<!-- <tr>
-					<td id="Mar20">20</td>
-					<td id="Mar21">21</td>
-					<td id="Mar22">22</td>
-					<td id="Mar23">23</td>
-					<td id="Mar24">24</td>
-					<td id="Mar25">25</td>
-					<td id="Mar26">26</td>
-				</tr>
-				<tr>
-					<td id="Mar27">27</td>
-					<td id="Mar28">28</td>
-					<td id="Mar29">29</td>
-					<td id="Mar30">30</td>
-					<td id="Mar31">31</td>
-					<td></td>
-					<td></td>
-				</tr> -->
-			</table>
+			<div id="login-popup" class="popup">
+		        <form onsubmit="return false;">
+		          <label for="username"><strong>Username:</strong></label>
+		          <input id="username" type="text" name="username"/>
+		          <button type="submit" onclick="setUsername();">Login</button>
+		        </form>
+		      </div>
+			<div class="sidebar">
+				<table>
+					<tr>
+						<th class='month' colspan="7">December</th>
+					<tr>
+						<th>S</th>
+						<th>M</th>
+						<th>T</th>
+						<th>W</th>
+						<th>T</th>
+						<th>F</th>
+						<th>S</th>
+					</tr>
+					<!-- <tr>
+						<td></td>
+						<td></td>
+						<td id="Dec1">1</td>
+						<td id="Dec2">2</td>
+						<td id="Dec3">3</td>
+						<td id="Dec4">4</td>
+						<td id="Dec5">5</td>
+					</tr>
+					<tr>
+						<td id="Dec6">6</td>
+						<td id="Dec7">7</td>
+						<td id="Dec8">8</td>
+						<td id="Dec9">9</td>
+						<td id="Dec10">10</td>
+						<td id="Dec11">11</td>
+						<td id="Dec12">12</td>
+					</tr>
+					<tr>
+						<td id="Dec13">13</td>
+						<td id="Dec14">14</td>
+						<td id="Dec15">15</td>
+						<td id="Dec16">16</td>
+						<td id="Dec17">17</td>
+						<td id="Dec18">18</td>
+						<td id="Dec19">19</td>
+					</tr>
+					<tr>
+						<td id="Dec20">20</td>
+						<td id="Dec21">21</td>
+						<td id="Dec22">22</td>
+						<td id="Dec23">23</td>
+						<td id="Dec24">24</td>
+						<td id="Dec25">25</td>
+						<td id="Dec26">26</td> -->
+					</tr>
+					<tr>
+						<td id="Dec27">27</td>
+						<td id="Dec28">28</td>
+						<td id="Dec29">29</td>
+						<td id="Dec30">30</td>
+						<td id="Dec31">31</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<th class='month' colspan="7">January</th>
+					<tr>
+						<th>S</th>
+						<th>M</th>
+						<th>T</th>
+						<th>W</th>
+						<th>T</th>
+						<th>F</th>
+						<th>S</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td id="Jan1">1</td>
+						<td id="Jan2">2</td>
+					</tr>
+					<tr>
+						<td id="Jan3">3</td>
+						<td id="Jan4">4</td>
+						<td id="Jan5">5</td>
+						<td id="Jan6">6</td>
+						<td id="Jan7">7</td>
+						<td id="Jan8">8</td>
+						<td id="Jan9">9</td>					
+					</tr>
+					<tr>
+						<td id="Jan10">10</td>
+						<td id="Jan11">11</td>
+						<td id="Jan12">12</td>
+						<td id="Jan13">13</td>
+						<td id="Jan14">14</td>
+						<td id="Jan15">15</td>
+						<td id="Jan16">16</td>
+					</tr>
+					<tr>
+						<td id="Jan17">17</td>
+						<td id="Jan18">18</td>
+						<td id="Jan19">19</td>						
+						<td id="Jan20">20</td>
+						<td id="Jan21">21</td>
+						<td id="Jan22">22</td>
+						<td id="Jan23">23</td>
+					</tr>
+					<tr>
+						<td id="Jan24">24</td>
+						<td id="Jan25">25</td>
+						<td id="Jan26">26</td>
+						<td id="Jan27">27</td>
+						<td id="Jan28">28</td>
+						<td id="Jan29">29</td>
+						<td id="Jan30">30</td>
+					</tr>
+					<tr>
+						<td id="Jan31">31</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<th class='month' colspan="7">February</th>
+					<tr>
+						<th>S</th>
+						<th>M</th>
+						<th>T</th>
+						<th>W</th>
+						<th>T</th>
+						<th>F</th>
+						<th>S</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td id="Feb1">1</td>
+						<td id="Feb2">2</td>
+						<td id="Feb3">3</td>
+						<td id="Feb4">4</td>
+						<td id="Feb5">5</td>
+						<td id="Feb6">6</td>
+					</tr>
+					<tr>
+						<td id="Feb7">7</td>
+						<td id="Feb8">8</td>
+						<td id="Feb9">9</td>
+						<td id="Feb10">10</td>
+						<td id="Feb11">11</td>
+						<td id="Feb12">12</td>
+						<td id="Feb13">13</td>
+					</tr>
+					<tr>
+						<td id="Feb14">14</td>
+						<td id="Feb15">15</td>
+						<td id="Feb16">16</td>
+						<td id="Feb17">17</td>
+						<td id="Feb18">18</td>
+						<td id="Feb19">19</td>
+						<td id="Feb20">20</td>
+					</tr>
+					<tr>
+						<td id="Feb21">21</td>
+						<td id="Feb22">22</td>
+						<td id="Feb23">23</td>
+						<td id="Feb24">24</td>
+						<td id="Feb25">25</td>
+						<td id="Feb26">26</td>
+						<td id="Feb27">27</td>
+					</tr>
+					<tr>
+						<td id="Feb28">28</td>
+						<td id="Feb29">29</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<th class='month' colspan="7">March</th>
+					<tr>
+						<th>S</th>
+						<th>M</th>
+						<th>T</th>
+						<th>W</th>
+						<th>T</th>
+						<th>F</th>
+						<th>S</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td id="Mar1">1</td>
+						<td id="Mar2">2</td>
+						<td id="Mar3">3</td>
+						<td id="Mar4">4</td>
+						<td id="Mar5">5</td>
+					</tr>
+					<tr>
+						<td id="Mar6">6</td>
+						<td id="Mar7">7</td>
+						<td id="Mar8">8</td>
+						<td id="Mar9">9</td>
+						<td id="Mar10">10</td>
+						<td id="Mar11">11</td>
+						<td id="Mar12">12</td>
+					</tr>
+					<tr>
+						<td id="Mar13">13</td>
+						<td id="Mar14">14</td>
+						<td id="Mar15">15</td>
+						<td id="Mar16">16</td>
+						<td id="Mar17">17</td>
+						<td id="Mar18">18</td>
+						<td id="Mar19">19</td>
+					</tr>
+					<!-- <tr>
+						<td id="Mar20">20</td>
+						<td id="Mar21">21</td>
+						<td id="Mar22">22</td>
+						<td id="Mar23">23</td>
+						<td id="Mar24">24</td>
+						<td id="Mar25">25</td>
+						<td id="Mar26">26</td>
+					</tr>
+					<tr>
+						<td id="Mar27">27</td>
+						<td id="Mar28">28</td>
+						<td id="Mar29">29</td>
+						<td id="Mar30">30</td>
+						<td id="Mar31">31</td>
+						<td></td>
+						<td></td>
+					</tr> -->
+				</table>
+			</div>
 		</div>
 	</body>
 
@@ -484,6 +515,13 @@ document.getElementById("Dec31"),]
 
 var events = content.getElementsByClassName("events");
 
+var login = document.getElementById("login-popup");
+var container = document.getElementsByClassName("container")[0];
+var overlay = document.getElementById("overlay");
+
+login.setAttribute("hidden", true);
+overlay.setAttribute("hidden", true);
+
 for (var i = 0; i < events.length; i++){
 	events[i].addEventListener("mouseenter", highlightDate());
 	events[i].addEventListener("mouseleave", unhighlightDate());
@@ -567,7 +605,7 @@ function addEvent() {
 	req.open('POST', '/addEvent', true);
     req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-    req.send('eventname='+eventname+'&date='+idDate(date)+'&formattedDate='+changeDate(date)+'&description='+description);
+    req.send('eventname='+eventname+'&date='+idDate(date)+'&formattedDate='+changeDate(date)+'&description='+description+'&username='+parseCookies()['username']);
 
     makeGet('/events');
 }
@@ -580,7 +618,7 @@ function addComment(id) {
 	reqp.open('POST', '/addComment', true);
 	reqp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-	reqp.send('id='+id+'&comment='+comment+'&username='+'Get this from cookies');
+	reqp.send('id='+id+'&comment='+comment+'&username='+parseCookies()['username']);
 
 	updateComments(id);
 }
@@ -640,7 +678,38 @@ function handleRes(req, elementId) {
 	}
 }
 
+function getUsername() {
+    login.removeAttribute("hidden");
+    container.setAttribute("hidden", true);
+    overlay.removeAttribute("hidden");
+  }
+
+function setUsername() {
+	document.cookie = "username=" + document.getElementById("username").value;
+	login.setAttribute("hidden", true);
+	container.removeAttribute("hidden");
+	overlay.setAttribute("hidden", true);
+	makeGet('/events');
+}
+
+function parseCookies() {
+	var list = {},
+	    rc = document.cookie;
+
+	rc && rc.split(';').forEach(function(cookie) {
+	    var parts = cookie.split('=');
+	    list[parts.shift().trim()] = decodeURI(parts.join('='));
+	});
+
+	return list;
+}
+
 makeGet('/events');
+  if (document.cookie.length == 0) {
+    getUsername();
+  } else {
+    makeGet('/events');
+  }
 
 </script>
 
