@@ -9,12 +9,14 @@ var http = require('http')
 var posts= [
   {
     activity: '(Event Name)',
+    date: 'December 18th, 2015',
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: '(0)',
   },
   {
     activity: '(Event Name)',
+    date: 'December 18th, 2015',
     description: '(Insert Event Description)',
     proposer: '(Your Name Here)',
     likes: '(0)',
@@ -46,6 +48,7 @@ function viewPosts(req, res) {
   var compiled = _.template(
     "<div class='posts'>" +
     "<h2><%= activity %></h2>" +
+    "<p>Date:<%= date %></p>" +
     "<p>Description: <%= description %></p>" +
     "<p>Proposed By: <%= proposer %></p>" +
     "<p>Likes: <%= likes %></p>" +
